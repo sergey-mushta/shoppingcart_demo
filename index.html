@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Shopping cart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/script.js"></script>
+    <script type="html/tpl" id="product-item-tpl">
+        <tr class="product-item" data-code="{code}">
+            <td class="image-container">
+                <img src="img/{image_id}.png" alt="{name}" class="image">
+            </td>
+            <td class="details-container">
+                <div class="name">{name}</div>
+                <div class="code">Product code {code}</div>
+            </td>
+            <td class="text-center" nowrap>
+                <a href="#" class="qty-btn" data-sign="-1"><i class="fa fa-minus" aria-hidden="true"></i></a>
+                <input type="number" class="input-qty" value=0 min=0>
+                <a href="#" class="qty-btn" data-sign="1"><i class="fa fa-plus" aria-hidden="true"></i></a>
+            </td>
+            <td class="text-right price-container">{price} €</td>
+            <td class="text-right price-container"><span class="total-value">0.00</span> €</td>
+        </tr>
+    </script>
+    <script type="html/tpl" id="discount-item-tpl">
+        <div class="order-discount-item">
+            <div class="pull-left">
+                {discount_title} {product_name} offer
+            </div>
+            <div class="pull-right total-discount">
+                -{discount} €
+            </div>
+        </div>
+    </script>
+</head>
+
+<body>
+    <div class="container main">
+        <div class="row">
+            <div class="col-9 block-left">
+                <h4>Shopping cart</h4>
+                <hr>
+                <table class="table products-table">
+                    <thead class="products-table-header">
+                        <tr>
+                            <th colspan=2>Product details</th>
+                            <th class="text-center">Quantity</th>
+                            <th class="text-right">Price</th>
+                            <th class="text-right">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-items-container">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3 block-right">
+                <h4>Order summary</h4>
+                <hr>
+                <div class="order-summary-container">
+                    <div class="pull-left">
+                        <span id="total-items-container">0</span> Item<span id="total-items-multi">s</span>
+                    </div>
+                    <div class="pull-right total-price">
+                        <span id="total-price-container">0.00</span> €
+                    </div>
+                </div>
+                <hr>
+                <div class="discounts-container d-none">
+                    <h4>Discounts</h4>
+                    <div id="discounts-items-container">
+                    </div>
+                    <hr>
+                </div>
+
+                <div class="checkout-container">
+                    <hr>
+                    <div class="final-price-container">
+                        <div class="pull-left">
+                            Total cost
+                        </div>
+                        <div class="pull-right final-price">
+                            <span id="final-price-container">0.00</span> €
+                        </div>
+                    </div>
+                    <button class="btn btn-checkout" id="checkout_button">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
